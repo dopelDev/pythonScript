@@ -25,3 +25,11 @@ class piglet(object):
             self.connectionSucess = True
         else:
             self.connectionSucess = False
+
+
+class sopeando(piglet):
+    """docstring for sopeando."""
+
+    def __init__(self, arg):
+        super().__init__()
+        self.arg = arg
