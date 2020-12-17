@@ -19,4 +19,11 @@ Wed 16 Dec 2020 04:49:49 AM -05
     que reciba retorno de piglet
     y tambien archivos html y carpetas
 """
-Wed 16 Dec 2020 07:21:27 PM -05
+Thu 17 Dec 2020 02:58:49 AM -05
+"""
+  agregado class sopero y def getAurl
+"""
+Thu 17 Dec 2020 04:16:59 AM -05
+"""
+  funcional getAurl tanto en tmp como en presistente
+"""
