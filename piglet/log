@@ -9,3 +9,14 @@ Tue 15 Dec 2020 03:45:23 AM -05
     get(url)
     creacion de class sopeando hija de piglet
 """
+Wed 16 Dec 2020 04:49:49 AM -05
+"""
+  class piglet
+    agregar pueda recibir archivo con url
+    y method que retorne tantas htmls como se le alla mandado
+
+  class sopeador
+    que reciba retorno de piglet
+    y tambien archivos html y carpetas
+"""
+Wed 16 Dec 2020 07:21:27 PM -05
