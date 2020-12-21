@@ -53,7 +53,9 @@ class sopero(object):
 
     def __init__(self):
         print('__init__.sopero')
+        self.domain = None
         self.listaPrima = []
+        self.specialChars = ['=', '?', '/']
 
     def getAurl(self, html):
         BigSopa = BeautifulSoup(html, 'html.parser')
@@ -69,3 +71,12 @@ class sopero(object):
                 self.listaPrima.append(url.get('href'))
 
         return self.listaPrima
+
+    def getList(self, listOfUrls):
+        pass
+
+    def getDomain(self):
+        if len(self.listaPrima) == 0:
+            self.domain = 'list dont ready'
+        else:
+            self.domain = self.listaPrima[0]
