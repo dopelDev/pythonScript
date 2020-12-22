@@ -54,8 +54,10 @@ class sopero(object):
     def __init__(self):
         print('__init__.sopero')
         self.domain = None
-        self.listaPrima = []
+        self.depurado = False
+        self.listaDepurada = []
         self.specialChars = ['=', '?', '/']
+        self.listaSinDepurar = []
 
     def getAurl(self, html):
         BigSopa = BeautifulSoup(html, 'html.parser')
@@ -65,15 +67,45 @@ class sopero(object):
                 continue
             elif url == '':
                 continue
-            elif len(url) < 2:
+            elif len(url) < 5:
                 continue
             else:
-                self.listaPrima.append(url.get('href'))
+                self.listaDepurada.append(url.get('href'))
+        # conocer el estado de la lista Depurado o no
+        self.depurado = True
 
-        return self.listaPrima
+        return self.listaDepurada
 
-    def getList(self, listOfUrls):
-        pass
+    def getListByTxt(self, listOfUrls):
+        self.listaSinDepurar = listOfUrls
+
+    def addDomain(self, domainName):
+        self.domain = domainName
+
+    # def getDomainFromList(self):
+        # listaOfDomain = []
+        # listaOfUrls = self.listaDepurada
+        # if len(listaOfUrls) > 0:
+            # leght = len(listOfUrls)
+        # else:
+            # 'erroor'
+            # break
+        # for range(leght):
+            # if listaOfUrls[i][]
+
+
+    def depurarList(self):
+        for url in self.listaSinDepurar:
+            if url is None:
+                continue
+            elif url == '':
+                continue
+            elif len(url) < 5:
+                continue
+            else:
+                self.listaDepurada.append(url)
+        # conocer el estado de la lista Depurado o no
+        self.depurado = True
 
     def getDomain(self):
         if len(self.listaPrima) == 0:

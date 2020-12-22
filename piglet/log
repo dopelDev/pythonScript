@@ -29,6 +29,19 @@ Thu 17 Dec 2020 04:16:59 AM -05
 """
 Mon 21 Dec 2020 04:09:08 AM -05
 """
-  branch dev
+  branch dev:
   new vars
+"""
+Mon 21 Dec 2020 07:36:19 PM -05
+"""
+  branch dev:
+  usando def depurado en def getAUrl y getListByTxt
+"""
+Mon 21 Dec 2020 10:52:39 PM -05
+"""
+  dev branch
+  re modulo:
+    validar url
+    obtener domain
+    reescribir def depurar
 """
