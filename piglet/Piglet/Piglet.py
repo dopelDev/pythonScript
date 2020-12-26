@@ -63,14 +63,10 @@ class sopero(object):
         BigSopa = BeautifulSoup(html, 'html.parser')
 
         for url in BigSopa.find_all('a'):
-            if url is None:
-                continue
-            elif url == '':
-                continue
-            elif len(url) < 5:
-                continue
+            if 'http' in url:
+                self.listaDepurada.append(url)
             else:
-                self.listaDepurada.append(url.get('href'))
+                continue
         # conocer el estado de la lista Depurado o no
         self.depurado = True
 
@@ -79,36 +75,17 @@ class sopero(object):
     def getListByTxt(self, listOfUrls):
         self.listaSinDepurar = listOfUrls
 
-    def addDomain(self, domainName):
-        self.domain = domainName
-
-    # def getDomainFromList(self):
-        # listaOfDomain = []
-        # listaOfUrls = self.listaDepurada
-        # if len(listaOfUrls) > 0:
-            # leght = len(listOfUrls)
-        # else:
-            # 'erroor'
-            # break
-        # for range(leght):
-            # if listaOfUrls[i][]
-
-
     def depurarList(self):
         for url in self.listaSinDepurar:
-            if url is None:
-                continue
-            elif url == '':
-                continue
-            elif len(url) < 5:
-                continue
-            else:
+            if 'http' in url:
                 self.listaDepurada.append(url)
+            else:
+                continue
         # conocer el estado de la lista Depurado o no
         self.depurado = True
 
-    def getDomain(self):
-        if len(self.listaPrima) == 0:
-            self.domain = 'list dont ready'
-        else:
-            self.domain = self.listaPrima[0]
+    # def getDomain(self):
+        # if len(self.listaPrima) == 0:
+            # self.domain = 'list dont ready'
+        # else:
+            # self.domain = self.listaPrima[0]
