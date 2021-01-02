@@ -13,4 +13,71 @@
 #Facebook : https://www.facebook.com/profile.php?id=100036185774355
 #Mail : 322kuroneko2@gmail.com
 ################################################
+"""
+    version beta 0.0.4
+"""
 from pyperclip import paste, copy
+from sys import argv
+import curses
+from random import randrange
+
+def fileNameOut(params):
+    if len(params) > 1:
+        fileName = params[1]
+        objfile = open(fileName, mode='w')
+    else:
+        fileName = str(randrange(100036185774355))
+        objfile = open(fileName, mode='w')
+
+    return objfile
+
+def writeFile(list2Write, objfile):
+    if len(list2Write) > 0 and list2Write != None:
+        for index, line in enumerate(list2Write):
+            if index < len(list2Write) - 1:
+                print(line)
+                objfile.writelines(line)
+                objfile.writelines('\n')
+            else:
+                objfile.writelines(line)
+        objfile.close()
+
+def main(params):
+    objfile = fileNameOut(params)
+    list2Write = copyAndShow()
+    writeFile(list2Write, objfile)
+
+
+def copyAndShow():
+    stdscr = curses.initscr()
+    curses.curs_set(False)
+    curses.noecho()
+    curses.cbreak()
+    tmp = ''
+    newTmp = ''
+    copy(newTmp)
+    list2Write = []
+    height, widght = stdscr.getmaxyx()
+    stdscr.addstr(0, round(widght/2), 'aqui comienza')
+    stdscr.refresh()
+    while True:
+        newTmp = paste()
+        if tmp != newTmp:
+            tmp = newTmp
+            list2Write.append(tmp)
+            stdscr.addstr(2, 0, tmp)
+        stdscr.refresh()
+        stdscr.nodelay(True)
+        key = stdscr.getch()
+        if key == ord('q'):
+            break
+    curses.curs_set(True)
+    curses.echo()
+    curses.nocbreak()
+    curses.endwin()
+
+    return list2Write
+
+if __name__ == '__main__':
+    params = argv
+    main(params=params)
