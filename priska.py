@@ -12,30 +12,44 @@
 #GitHub :  https://github.com/dopelDev
 #Facebook : https://www.facebook.com/profile.php?id=100036185774355
 #Mail : 322kuroneko2@gmail.com
+#Description :
+#Version Note: espacios entre appends
+issue : no captura mas de una pantalla de terminal
 ################################################
 """
-    version beta 0.0.4
+    version beta 0.0.4.2
 """
 from pyperclip import paste, copy
 from sys import argv
 import curses
 from random import randrange
+from os import path
 
 def fileNameOut(params):
-    if len(params) > 1:
-        fileName = params[1]
-        objfile = open(fileName, mode='w')
-    else:
+    # entrada de params
+    # option a (append)
+    if len(params) == 1:
         fileName = str(randrange(100036185774355))
         objfile = open(fileName, mode='w')
+    elif len(params) == 2:
+        fileName = params[1]
+        objfile = open(fileName, mode='w')
+    elif len(params) == 3 and params[2] == '-a':
+        if path.exists(params[1]):
+            fileName = params[1]
+            objfile = open(fileName, mode='a')
+        else:
+            print('file no exists')
+            exit()
 
     return objfile
 
 def writeFile(list2Write, objfile):
     if len(list2Write) > 0 and list2Write != None:
         for index, line in enumerate(list2Write):
+            if objfile.tell() != 0:
+                objfile.writelines('\n\n')
             if index < len(list2Write) - 1:
-                print(line)
                 objfile.writelines(line)
                 objfile.writelines('\n')
             else:
@@ -65,6 +79,7 @@ def copyAndShow():
         if tmp != newTmp:
             tmp = newTmp
             list2Write.append(tmp)
+            stdscr.clear()
             stdscr.addstr(2, 0, tmp)
         stdscr.refresh()
         stdscr.nodelay(True)
