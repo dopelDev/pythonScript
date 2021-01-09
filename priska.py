@@ -14,7 +14,7 @@
 #Mail : 322kuroneko2@gmail.com
 #Description :
 #Version Note: espacios entre appends
-issue : no captura mas de una pantalla de terminal
+#issue : no captura mas de una pantalla de terminal
 ################################################
 """
     version beta 0.0.4.2
