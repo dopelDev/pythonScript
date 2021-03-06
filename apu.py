@@ -1,11 +1,12 @@
 #!/home/dopel/venv/scripts/bin/python3.8
 
 from sys import argv
-from os import getcwd, mkdir, chdir
+from os import getcwd, mkdir, chdir, makedirs
 from time import ctime
 
 current_path = getcwd()
-dirs = ['assetsNscript', 'code', 'scrappyData', 'cleanData']
+dirs = ['assetsNscripts', 'code', 'scrappyData', 'cleanData']
+sub_dirs_assetsNscripts = [dirs[0] + '/assets', dirs[0] + '/scripts']
 files = ['log.md', 'readme.md']
 project_name = argv[1]
 
@@ -15,6 +16,8 @@ if __name__ == '__main__':
     current_path = getcwd()
     for item in dirs:
         mkdir(current_path + '/' + item)
+    for item in sub_dirs_assetsNscripts:
+        makedirs(current_path + '/' + item)
     for item in files:
         objFile = open(current_path + '/' + item, mode='w')
         objFile.writelines('Name Project : ' + project_name + '\n')
